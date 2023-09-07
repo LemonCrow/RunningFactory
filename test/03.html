@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>러닝팩토리 메인페이지</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+/* Style the body */
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+}
+
+/* Header/logo Title */
+.header {
+  padding: 80px;
+  text-align: center;
+  background: #1abc9c;
+  color: white;
+}
+
+/* Increase the font size of the heading */
+.header h1 {
+  font-size: 40px;
+}
+
+/* Style the top navigation bar */
+.navbar {
+  overflow: hidden;
+  background-color: #333;
+}
+
+/* Style the navigation bar links */
+.navbar a {
+  float: left;
+  /*display: block;*/
+  color: white;
+  text-align: center;
+  padding: 14px 20px;
+  text-decoration: none;
+}
+
+/* Right-aligned link */
+.navbar a.right {
+  float: right;
+}
+
+/* Change color on hover */
+/*.navbar a:hover {
+  background-color: #ddd;
+  color: black;
+}*/
+
+.navbar a:hover, .dropdown:hover .dropbtn {
+  background-color: red;
+}
+
+/* Column container */
+.row {  
+  display: -ms-flexbox; /* IE10 */
+  display: flex;
+  -ms-flex-wrap: wrap; /* IE10 */
+  flex-wrap: wrap;
+}
+
+/* Create two unequal columns that sits next to each other */
+/* Sidebar/left column */
+.side {
+  -ms-flex: 30%; /* IE10 */
+  flex: 30%;
+  background-color: #f1f1f1;
+  padding: 20px;
+}
+
+/* Main column */
+.main {   
+  -ms-flex: 70%; /* IE10 */
+  flex: 70%;
+  background-color: white;
+  padding: 20px;
+}
+
+/* Fake image, just for this example */
+.fakeimg {
+  background-color: #aaa;
+  width: 100%;
+  padding: 20px;
+}
+
+/* Footer */
+.footer {
+  padding: 20px;
+  text-align: center;
+  background: #ddd;
+}
+
+/* Responsive layout - when the screen is less than 700px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 700px) {
+  .row {   
+    flex-direction: column;
+  }
+}
+
+/* Responsive layout - when the screen is less than 400px wide, make the navigation links stack on top of each other instead of next to each other */
+@media screen and (max-width: 400px) {
+  .navbar a {
+    float: none;
+    width: 100%;
+  }
+}
+
+/*드랍다운관련*/
+.dropdown {
+  float: left;
+  overflow: hidden;
+}
+
+.dropdown .dropbtn {
+  font-size: 16px;  
+  border: none;
+  outline: none;
+  color: white;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+}
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+.dropdown-content a {
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+/*드랍다운관련*/
+
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>러닝팩토리에 오신것을 환영합니다</h1>
+  <p>11월까지 3명이 죽어나는 페이지</p>
+</div>
+
+
+
+<div class="navbar">
+
+  <div class="dropdown">
+    <button class="dropbtn">강의 
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+      <a href="04.html">강의찾기</a>
+      <a href="#">강의보기</a>
+      <a href="#">기타</a>
+    </div>
+  </div>
+  <div class="dropdown">
+    <button class="dropbtn">공부자료 
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+      <a href="#">과제</a>
+      <a href="#">시험관련</a>
+      <a href="#">셀프테스트</a>
+    </div>
+  </div>
+  <a href="#">자유게시판</a>
+
+  <a href="#" class="right">내정보설정</a>
+</div>
+<!-- 검색팝업스크립트 -->
+
+
+
+<div class="row">
+  <div class="side">
+    <h2>한국폴리텍</h2>
+    <h5>서울정수캠퍼스</h5>
+    <div class="fakeimg" style="height:200px;">로고?</div>
+    <p>수업내용을 팔로업하기!</p>
+    <h3>공부하자</h3>
+    <p>여기서 시험 대비!</p>
+    <div class="fakeimg" style="height:60px;">과제</div><br>
+    <div class="fakeimg" style="height:60px;">시험관련</div><br>
+    <div class="fakeimg" style="height:60px;">기타</div>
+  </div>
+  <div class="main">
+    <h2>한국폴리텍대학 서울정수캠퍼스</h2>
+    <h5>러닝팩토리</h5>
+    <div class="fakeimg" style="height:200px;">이미지?</div>
+    <p>또 수업시간에 졸았다고요...</p>
+    <p>여러분 걱정하지 마세요! 러닝팩토리가 있잖아요! ^^</p>
+    <br>
+    <h2>인공지능소프트웨어</h2>
+    <h5>그냥 한번 써 봤어요</h5>
+    <div class="fakeimg" style="height:200px;">AISW?</div>
+    <p>우리과 실습실은</p>
+    <p>여름에 시원하고 겨울에 따뜻하다</p>
+  </div>
+</div>
+
+<div class="footer">
+  <h2>한국폴리텍대학 서울정수캠퍼스</h2>
+</div>
+
+</body>
+</html>

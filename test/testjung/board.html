@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+  @import url("test.css");
+body {
+  font-family: "Lato", sans-serif;
+}
+
+/* Fixed sidenav, full height */
+.sidenav {
+  height: 100%;
+  width: 200px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  padding-top: 20px;
+}
+
+/* Style the sidenav links and the dropdown button */
+.sidenav a, .dropdown-btn {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 20px;
+  color: #818181;
+  display: block;
+  border: none;
+  background: none;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  outline: none;
+}
+
+/* On mouse-over */
+.sidenav a:hover, .dropdown-btn:hover {
+  color: #f1f1f1;
+}
+
+/* Main content */
+.main {
+  margin-left: 200px; /* Same as the width of the sidenav */
+  font-size: 20px; /* Increased text to enable scrolling */
+  padding: 0px 10px;
+}
+
+/* Add an active class to the active dropdown button */
+.active {
+  background-color: green;
+  color: white;
+}
+
+/* Dropdown container (hidden by default). Optional: add a lighter background color and some left padding to change the design of the dropdown content */
+.dropdown-container {
+  display: none;
+  background-color: #262626;
+  padding-left: 8px;
+}
+
+/* Optional: Style the caret down icon */
+.fa-caret-down {
+  float: right;
+}
+  padding-right: 8px;
+
+/* Some media queries for responsiveness */
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+</style>
+</head>
+<body>
+
+<div class="sidenav">
+  <a href="intro.html">LF소개</a>
+<!--   <a href="#services">Services</a> -->
+  <a href="lecture.html">강의</a>
+  <button class="dropdown-btn">자료실
+    <i class="fa fa-caret-down"></i>
+  </button>
+  <div class="dropdown-container">
+    <a href="test/test.php">자료실</a>
+    <a href="selfTest.html">셀프테스트</a>
+  </div>
+  <a href="board.html">자유게시판</a>
+<!--   <a href="myInfo.html">내정보수정</a> -->
+
+  <!-- test starts-->
+  <button class="dropdown-btn">설정
+    <i class="fa fa-caret-down"></i>
+  </button>
+  <div class="dropdown-container">
+    <a href="myInfo.html">내정보수정</a>
+    <a href="adminSettings.html">관리자모드</a>
+  </div>
+  <!-- test ends -->
+</div>
+
+<div class="main">
+  <section id="contents" class="bbs">
+  <div class="contents_box">
+
+    <!-- board_top 게시판목록 상단 :: s -->
+<div class="board_top">
+  <div class="board_top_left">
+    <div class="ts_box">
+      <p class="total">게시판 게시물 갯수</p> <!-- 게시판 게시물 갯수 -->
+    </div>
+  </div>
+
+    <!-- board_top_right board_top 토탈 및 게시판 검색과 제목 박스 -->
+  <div class="board_top_right">
+    <form name="bbsschfrm" method="post" action="#">
+      <input type="hidden" name="bbsId" value="cHNpZFpuOXJWYlNGRVBPeTUyOE11Z3d0ZFBlVEg0SFlDbzkrcHBGcDRHdz0=">
+      <fieldset>
+        <legend>자유게시판</legend>
+        <div class="bsch_box">
+          <label class="blind" for="bsch_item">검색 항목 선택</label>
+          <select class="" name="searchCnd" id="bsch_item">
+            <option value="NTT_SJ">제목</option>
+            <option value="NTCR_NM">작성자</option>
+            <option value="NTT_CN">내용</option>
+            </select>
+          <label class="blind" for="bsch_txt">검색 내용 입력(검색)</label>
+
+           <!-- 검색박스  -->
+          <input type="text" class="text" id="bsch_txt" name="searchWrd" value="">
+
+          <!-- 검색 버튼 -->
+          <button type="submit" class="btn_bsch"><span>검색</span></button>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+</div>
+    <!-- board top 게시판목록 상단 :: e -->
+
+
+
+<!-- tbl_list 게시판목록 :: s -->
+
+
+      <!-- 게시판 전체 -->
+      <form id="boardList" name="listfrm" action="/jungsu/board.do?menu=12492" method="post">
+        <input type="hidden" name="bbsId" value="cHNpZFpuOXJWYlNGRVBPeTUyOE11Z3d0ZFBlVEg0SFlDbzkrcHBGcDRHdz0=">
+        <input type="hidden" name="pageIndex" value="1">
+        <input type="hidden" name="withDbAt" value="N">
+        <table class="tbl_list">
+      <!-- 컨텐츠 게시판 테이블  -->
+        <br>
+        <!-- 게시판 이름 -->
+        <caption>학과게시판 목록</caption>
+        <colgroup>
+          <col style="width: 6%">
+                <col><col style="width: 9%">
+                <col style="width: 9%">
+                </colgroup>
+        <!-- thead 게시판 제목, 작성자, 작성일 -->
+        <thead>
+          <tr>
+            <th scope="col">번호</th>
+                  <th scope="col">제목</th>
+                  <th scope="col">작성자</th>
+                  <th scope="col">작성일</th>
+                  </tr>
+        </thead>
+        <!-- tbody 작성된 게시글 -->
+        <tbody>
+          <tr>
+            <td class="num">
+              35
+            </td>
+            <td class="b_subject ">
+              <span>
+                <a href="#" onclick="fn_board_detail('654522'); return false;"> <!-- 부분 수정필요 -->
+                  게시글 제목 1
+                </a>
+              </span>
+            </td>
+            <td>
+              작성자
+            </td>
+            <td>
+              작성날짜
+            </td>
+          </tr>
+          <tr>
+            <td class="num">
+              35
+            </td>
+            <td class="b_subject ">
+              <span>
+                <a href="#" onclick="fn_board_detail('654522'); return false;">
+                  게시글 제목 2
+                </a>
+              </span>
+            </td>
+            <td>
+              작성자
+            </td>
+            <td>
+              작성날짜
+            </td>
+          </tr>
+          <tr>
+            <tr>
+            <td class="num">
+              35
+            </td>
+            <td class="b_subject ">
+              <span>
+                <a href="#" onclick="fn_board_detail('654522'); return false;">
+                  게시글 제목 1
+                </a>
+              </span>
+            </td>
+            <td>
+              작성자
+            </td>
+            <td>
+              작성날짜
+            </td>
+          </tr>
+          <tr>
+            <tr>
+            <td class="num">
+              35
+            </td>
+            <td class="b_subject ">
+              <span>
+                <a href="#" onclick="fn_board_detail('654522'); return false;">
+                  게시글 제목 1
+                </a>
+              </span>
+            </td>
+            <td>
+              작성자
+            </td>
+            <td>
+              작성날짜
+            </td>
+          </tr>
+          <tr>
+            <tr>
+            <td class="num">
+              35
+            </td>
+            <td class="b_subject ">
+              <span>
+                <a href="#" onclick="fn_board_detail('654522'); return false;">
+                  게시글 제목 1
+                </a>
+              </span>
+            </td>
+            <td>
+              작성자
+            </td>
+            <td>
+              작성날짜
+            </td>
+          </tr>
+          <tr>
+            <tr>
+            <td class="num">
+              35
+            </td>
+            <td class="b_subject ">
+              <span>
+                <a href="#" onclick="fn_board_detail('654522'); return false;">
+                  게시글 제목 1
+                </a>
+              </span>
+            </td>
+            <td>
+              작성자
+            </td>
+            <td>
+              작성날짜
+            </td>
+          </tr>
+          <tr>
+            <tr>
+            <td class="num">
+              35
+            </td>
+            <td class="b_subject ">
+              <span>
+                <a href="#" onclick="fn_board_detail('654522'); return false;">
+                  게시글 제목 1
+                </a>
+              </span>
+            </td>
+            <td>
+              작성자
+            </td>
+            <td>
+              작성날짜
+            </td>
+          </tr>
+          <tr>
+            <tr>
+            <td class="num">
+              35
+            </td>
+            <td class="b_subject ">
+              <span>
+                <a href="#" onclick="fn_board_detail('654522'); return false;">
+                  게시글 제목 1
+                </a>
+              </span>
+            </td>
+            <td>
+              작성자
+            </td>
+            <td>
+              작성날짜
+            </td>
+          </tr>
+          <tr>
+            <tr>
+            <td class="num">
+              35
+            </td>
+            <td class="b_subject ">
+              <span>
+                <a href="#" onclick="fn_board_detail('654522'); return false;">
+                  게시글 제목 1
+                </a>
+              </span>
+            </td>
+            <td>
+              작성자
+            </td>
+            <td>
+              작성날짜
+            </td>
+          </tr>
+          <tr>
+            <tr>
+            <td class="num">
+              35
+            </td>
+            <td class="b_subject ">
+              <span>
+                <a href="#" onclick="fn_board_detail('654522'); return false;">
+                  게시글 제목 1
+                </a>
+              </span>
+            </td>
+            <td>
+              작성자
+            </td>
+            <td>
+              작성날짜
+            </td>
+          </tr>
+          <tr>
+          </tbody>
+        </table>
+      </form><!-- board list 게시판목록 :: e -->
+
+
+      <!-- btnbox basic 게시판 글쓰기 버튼 :: s -->
+      <div class="btnbox_basic">
+          <div class="btnbox_basic_right">
+          <a href="#" onclick="fn_board_write(); return false;" class="btn_basic"><span>글쓰기</span></a>
+          </div>
+        </div>
+      <!-- btnbox basic 게시판 글쓰기 버튼 :: e -->
+
+
+      <!-- 게시판 하단 paging 페이징  :: s -->
+      <div class="paging">
+        <a href="#" class="btn_fst" onclick="fn_board_pageMove(1);return false; ">
+          <span>
+            처음
+          </span>
+        </a>
+        <!-- pc용 이전 버튼 -->
+        <a href="#" class="btn_pre" onclick="fn_board_pageMove(1);return false; ">
+          <span>
+            이전
+          </span>
+        </a>
+        <!-- 모바일용 이전 버튼 :: s-->
+        <!-- <a href="#" class="btn_pre mobile" onclick="fn_board_pageMove(5);return false; ">
+          <span>
+            이전
+          </span>
+        </a> -->
+        <!-- 모바일용 이전 버튼 :: e -->
+        <a href="#" onclick="fn_board_pageMove(1);return false; ">
+          <span>
+            1
+          </span>
+        </a>
+        <a href="#" onclick="fn_board_pageMove(2);return false; ">
+          <span>
+            2
+          </span>
+        </a>
+        <a href="#" onclick="fn_board_pageMove(3);return false; ">
+          <span>
+            3
+          </span>
+        </a>
+        <a href="#" onclick="fn_board_pageMove(4);return false; ">
+          <span>
+            4
+          </span>
+        </a>
+        <a href="#" onclick="fn_board_pageMove(5);return false; ">
+          <span>
+            5
+          </span>
+        </a>
+        <a href="#" class="activep" title="현재 페이지">
+          <strong>
+            6
+          </strong>
+        </a>
+        <a href="#" onclick="fn_board_pageMove(7);return false; ">
+          <span>
+            7
+          </span>
+        </a>
+        <a href="#" onclick="fn_board_pageMove(8);return false; ">
+          <span>
+            8
+          </span>
+        </a>
+        <a href="#" onclick="fn_board_pageMove(9);return false; ">
+          <span>
+            9
+          </span>
+        </a>
+        <a href="#" onclick="fn_board_pageMove(10);return false; ">
+          <span>
+            10
+          </span>
+        </a>
+        <!-- 모바일용 다음 버튼 :: s -->
+        <!-- <a href="#" class="btn_next mobile" onclick="fn_board_pageMove(7);return false; ">
+          <span>
+            다음
+          </span>
+        </a> -->
+        <!-- 모바일용 다음 버튼 :: e -->
+        <!-- pc용 다음 버튼 -->
+        <a href="#" class="btn_next" onclick="fn_board_pageMove(11);return false; ">
+          <span>
+            다음
+          </span>
+        </a>
+        <a href="#" class="btn_last" onclick="fn_board_pageMove(165);return false; ">
+          <span>
+            끝
+          </span>
+        </a>
+
+        <!-- 뭔지 정확하게 모르겠음 페이지 넘기는 기능으로 추측:: s -->
+        <form id="searchVO" name="bschfrm" action="/jungsu/board.do?menu=254" method="post"><input type="hidden" name="ctgryCode" value="">
+        <input type="hidden" name="pageIndex" value="6">
+        <input type="hidden" name="searchWrd" value="">
+        <input type="hidden" name="searchCnd" value="">
+        </form>
+        <!-- 뭔지 정확하게 모르겠음 :: e -->
+      </div>
+      <script>
+      $( document ).ready(function() {
+        var url = $('#searchVO').attr('action');
+        var idx = url.indexOf("&ctgryCode");
+        if(idx > 0) {
+          url = url.substring(0, idx);
+          $('#searchVO').attr('action', url);
+        }
+      });
+      </script><!-- paging 페이징 :: e -->
+    </div>
+    <!-- board list :: e -->
+  </div>
+</div>
+
+<script>
+/* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
+var dropdown = document.getElementsByClassName("dropdown-btn");
+var i;
+
+for (i = 0; i < dropdown.length; i++) {
+  dropdown[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var dropdownContent = this.nextElementSibling;
+    if (dropdownContent.style.display === "block") {
+      dropdownContent.style.display = "none";
+    } else {
+      dropdownContent.style.display = "block";
+    }
+  });
+}
+
+/* 게시판 페이지 이동 @param page 페이지번호 */
+function fn_board_pageMove(page) {
+	document.bschfrm.pageIndex.value = page;
+	document.bschfrm.submit();
+}
+</script>
+
+</body>
+</html>
